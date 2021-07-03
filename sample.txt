@@ -1,3 +1,0 @@
-Hello World
-This is SHAIK ZEESHAN SAMEEH
-Using shell scripting in the process of learning the DevOps
