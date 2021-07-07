@@ -9,13 +9,13 @@ mongodb:	## Installing MongoDB Component
 catalogue:	## Installing Catalogue Component
 	@sh components/catalogue.sh
 
-redis:			## Installing Redis Component
+redis:		## Installing Redis Component
 	@sh components/redis.sh
 
-user:			## Installing User Component
+user:		## Installing User Component
 	@sh components/user.sh
 
-cart:			## Installing Cart Component
+cart:		## Installing Cart Component
 	@sh components/cart.sh
 
 mysql:		## Installing MySql Component
