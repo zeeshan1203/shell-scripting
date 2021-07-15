@@ -32,7 +32,6 @@ STAT $?
 
 HEAD "Extract Downloaded Archive\t"
 cd /tmp
-rm -f *
 unzip mongodb.zip &>>/tmp/roboshop.log
 STAT $?
 
