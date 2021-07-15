@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo Installing Mongodb
+source components/common.sh
+rm -f /tmp/roboshop.log
+sudo set-hostname frontend
+
