@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source components/commom.sh
+source components/common.sh
 rm -f /tmp/roboshop.log
 set-hostname frontend
 
