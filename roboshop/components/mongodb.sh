@@ -21,7 +21,7 @@ HEAD "Update Listen Address in Config File"
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 STAT $?
 
-HEAD "Start MongoDB Service\t"
+HEAD "Start MongoDB Service\t\t"
 systemctl enable mongod &>>/tmp/roboshop.log
 systemctl restart mongod &>>/tmp/roboshop.log
 STAT $?
@@ -35,7 +35,7 @@ cd /tmp
 unzip mongodb.zip &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Load Schema\t\t"
+HEAD "Load Schema\t\t\t"
 cd mongodb-main
 mongo < catalogue.js &>>/tmp/roboshop.log &&  mongo < users.js &>>/tmp/roboshop.log
 STAT $?
