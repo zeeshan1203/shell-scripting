@@ -4,15 +4,15 @@ source components/common.sh
 rm -f /tmp/roboshop.log
 set-hostname frontend
 
-HEAD "Installing Nginx"
+HEAD "Installing Nginx\t\t"
 yum install nginx -y &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Download from GitHub"
+HEAD "Download from GitHub\t\t"
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Delete old HTML DOCS"
+HEAD "Delete old HTML DOCS\t\t"
 rm -rf /usr/share/nginx/html*
 STAT $?
 
@@ -27,7 +27,7 @@ HEAD "Update Nginx Configuration"
 mv /usr/share/nginx/html/localhost.conf /etc/nginx/default.d/roboshop.conf
 STAT $?
 
-HEAD "Start Nginx"
+HEAD "Start Nginx\t\t\t"
 systemctl restart nginx &>>/tmp/roboshop.log
 systemctl enable nginx &>>/tmp/roboshop.log
 STAT $?
