@@ -4,7 +4,7 @@ source components/common.sh
 rm -f /tmp/roboshop.log
 set-hostname catalogue
 
-HEAD "Install NodeJS\t\t"
+HEAD "Install NodeJS\t\t\t"
 yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
 STAT $?
 
@@ -31,7 +31,7 @@ cd /home/roboshop/catalogue && npm install --unsafe-perm &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Fix Permissions to App Content\t\t"
-chown roboshop:roboshop /home/roboshop -Roboshop
+chown roboshop:roboshop /home/roboshop -R
 STAT $?
 
 # HEAD "Start Catalogue Service"
