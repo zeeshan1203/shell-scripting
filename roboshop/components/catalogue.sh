@@ -40,6 +40,6 @@ STAT $?
 
 
 
-HEAD "Start Catalogue Service"
+HEAD "Start Catalogue Service\t"
 systemctl daemon-reload && systemctl enable catalogue &>>/tmp/roboshop.log && systemctl restart catalogue &>>/tmp/roboshop.log
 STAT $?
