@@ -4,7 +4,7 @@ source components/common.sh
 rm -f /tmp/roboshop.log
 sudo set-hostname frontend
 
-HEAD "Setup MongoDB Yum repo file"
+HEAD "Setup MongoDB Yum repo file\t"
 echo '[mongodb-org-4.2]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
