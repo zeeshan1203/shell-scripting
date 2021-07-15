@@ -17,6 +17,11 @@ HEAD "Install MongoDB\t\t"
 yum install -y mongodb-org &>>/tmp/roboshop.log
 STAT $?
 
+HEAD "Update Listen Address in Config File"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+STAT $?
+
+
 
 
 
