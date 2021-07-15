@@ -13,3 +13,18 @@ LVER=1
 
 ## Validate if instance is already there
 
+INSTANCE_CREATED() {
+  INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" | jq .Reservations[].Instances[].State.Name | xargs -n1)
+  if{ "${INSTANCE_STATE}" = "running" ]; then
+    echo "${COMPONENT} Instance already exists!!"
+    exit 0
+  fi
+
+  if{ "${INSTANCE_STATE}" = "stopped" ]; then
+    echo "${COMPONENT} Instance already exists!!"
+    exit 0
+  fi
+
+  aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${LVER} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq
+
+}
