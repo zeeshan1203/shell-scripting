@@ -22,7 +22,7 @@ HEAD "Install RabbitMQ Server\t"
 yum install rabbitmq-server -y &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Start RabbitMQ Server\t\t\t"
+HEAD "Start RabbitMQ Server\t\t"
 systemctl enable rabbitmq-server &>>/tmp/roboshop.log &&  systemctl restart rabbitmq-server &>>/tmp/roboshop.log
 STAT $?
 
