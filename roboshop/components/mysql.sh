@@ -41,7 +41,7 @@ unzip -o mysql.zip &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Load Shipping Schema\t"
-cd /tmp && unzip mysql.zip &>>/tmp/roboshop.log && cd mysql-main &>>/tmp/roboshop.log && mysql -u root -pRoboShop@1 <shipping.sql &>>/tmp/roboshop.log
+cd /tmp && unzip -o mysql.zip &>>/tmp/roboshop.log && cd mysql-main &>>/tmp/roboshop.log && mysql -u root -pRoboShop@1 <shipping.sql &>>/tmp/roboshop.log
 STAT $?
 
 
