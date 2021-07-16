@@ -5,7 +5,7 @@ rm -f /tmp/roboshop.log
 set-hostname redis
 
 HEAD "Setup Redis Repos\t\t"
-yum install epel-release yum-utils yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>/tmp/roboshop.log && yum-config-manager --enable remi &>>/tmp/roboshop.log
+yum install epel-release yum-utils http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>/tmp/roboshop.log && yum-config-manager --enable remi &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Install Redis\t\t\t"
