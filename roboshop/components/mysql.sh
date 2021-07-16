@@ -17,7 +17,7 @@ yum remove mariadb-libs -y &>>/tmp/roboshop.log && yum install mysql-community-s
 STAT $?
 
 HEAD "Start MySQL Service\t"
-systemctl enable mysqld &>>/tmp/roboshop.log && systemctl restart mysqld &>>/tmp/roboshop.log
+systemctl enable mysqld &>>/tmp/roboshop.log && systemctl start mysqld &>>/tmp/roboshop.log
 STAT $?
 
 DEF_PASS=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
