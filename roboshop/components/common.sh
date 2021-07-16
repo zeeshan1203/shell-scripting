@@ -68,7 +68,7 @@ NODEJS() {
 }
 
 MAVEN() {
-  HEAD "Install Maven\t\t"
+  HEAD "Install Maven\t\t\t"
   yum install maven -y &>>/tmp/roboshop.log
   STAT $?
 
