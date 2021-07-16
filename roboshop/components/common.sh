@@ -92,21 +92,21 @@ MAVEN() {
 }
 
 PYTHON3() {
-  HEAD "Install Python3"
+  HEAD "Install Python3\t\t"
   yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
   STAT $?
 
   APP_USER_ADD
   DOWNLOAD_FROM_GITHUB $1
 
-  HEAD "Install Python Dependencies"
+  HEAD "Install Python Dependencies\t"
   cd /home/roboshop/$1 &&  pip3 install -r requirements.txt &>>/tmp/roboshop.log
   STAT $?
 
   USER_ID=$(id -u roboshop)
   GROUP_ID=$(id -g roboshop)
 
-  HEAD "Update App Configuration"
+  HEAD "Update App Configuration\t"
   sed -i -e "/uid/ c uid=${USER_ID}" -e "/gid/ c gid=${GROUP_ID}" /home/roboshop/$1/$1.ini
   STAT $?
 
