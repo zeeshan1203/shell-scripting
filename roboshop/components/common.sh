@@ -28,13 +28,17 @@ APP_USER_ADD() {
   fi
 }
 
-NODEJS() {
-  HEAD "Install NodeJS\t\t\t"
-  yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+SETUP_SYSTEMD() {
+  HEAD "Setup SystemD Service\t"
+  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/$1/systemd.service  && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service
   STAT $?
 
-  APP_USER_ADD
+  HEAD "Start $1 Service\t\t"
+  systemctl daemon-reload && systemctl enable $1 &>>/tmp/roboshop.log && systemctl restart $1 &>>/tmp/roboshop.log
+  STAT $?
+}
 
+DOWNLOAD_FROM_GITHUB() {
   HEAD "Download App From GitHub\t"
   curl -s -L -o /tmp/$1.zip "https://github.com/roboshop-devops-project/$1/archive/main.zip" &>>/tmp/roboshop.log
   STAT $?
@@ -42,6 +46,14 @@ NODEJS() {
   HEAD "Extract the Downloaded Archive\t"
   cd /home/roboshop && rm -rf $1 && unzip /tmp/$1.zip &>>/tmp/roboshop.log && mv $1-main $1
   STAT $?
+}
+NODEJS() {
+  HEAD "Install NodeJS\t\t\t"
+  yum install nodejs make gcc-c++ -y &>>/tmp/roboshop.log
+  STAT $?
+
+  APP_USER_ADD
+  DOWNLOAD_FROM_GITHUB
 
   HEAD "Install NodeJS Dependencies\t"
   cd /home/roboshop/$1 && npm install --unsafe-perm &>>/tmp/roboshop.log
@@ -51,12 +63,26 @@ NODEJS() {
   chown roboshop:roboshop /home/roboshop -R
   STAT $?
 
-  HEAD "Setup SystemD Service\t"
-  sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/$1/systemd.service && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service
+  SETUP_SYSTEMD "$1"
+
+}
+
+MAVEN() {
+  HEAD "Install Maven"
+  yum install maven -y &>>/tmp/roboshop.log
   STAT $?
 
-  HEAD "Start $1 Service\t\t"
-  systemctl daemon-reload && systemctl enable $1 &>>/tmp/roboshop.log && systemctl restart $1 &>>/tmp/roboshop.log
+  APP_USER_ADD
+  DOWNLOAD_FROM_GITHUB
+
+  HEAD "Make Application Package"
+  cd /home/roboshop/$1 && mvn clean package &>>/tmp/roboshop.log && mv target/$1-1.0.jar $1.jar &>>/tmp/roboshop.log
   STAT $?
+
+  HEAD "Fix Permissions to App Content"
+  chown roboshop:roboshop /home/roboshop -R
+  STAT $?
+
+  SETUP_SYSTEMD "$1"
 
 }
