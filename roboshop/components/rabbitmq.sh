@@ -23,7 +23,7 @@ yum install rabbitmq-server -y &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Start RabbitMQ Server\t\t"
-systemctl enable rabbitmq-server &>>/tmp/roboshop.log &&  systemctl restart rabbitmq-server &>>/tmp/roboshop.log
+systemctl enable rabbitmq-server &>>/tmp/roboshop.log &&  systemctl start rabbitmq-server &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Create Application User in RabbitMQ"
