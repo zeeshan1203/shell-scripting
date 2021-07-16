@@ -53,7 +53,7 @@ NODEJS() {
   STAT $?
 
   APP_USER_ADD
-  DOWNLOAD_FROM_GITHUB
+  DOWNLOAD_FROM_GITHUB $1
 
   HEAD "Install NodeJS Dependencies\t"
   cd /home/roboshop/$1 && npm install --unsafe-perm &>>/tmp/roboshop.log
@@ -73,7 +73,7 @@ MAVEN() {
   STAT $?
 
   APP_USER_ADD
-  DOWNLOAD_FROM_GITHUB
+  DOWNLOAD_FROM_GITHUB $1
 
   HEAD "Make Application Package"
   cd /home/roboshop/$1 && mvn clean package &>>/tmp/roboshop.log && mv target/$1-1.0.jar $1.jar &>>/tmp/roboshop.log
