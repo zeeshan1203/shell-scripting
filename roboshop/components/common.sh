@@ -51,7 +51,7 @@ NODEJS() {
   chown roboshop:roboshop /home/roboshop -R
   STAT $?
 
-  HEAD "Setup SystemD Service\t\t"
+  HEAD "Setup SystemD Service\t"
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/$1/systemd.service && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service
   STAT $?
 
