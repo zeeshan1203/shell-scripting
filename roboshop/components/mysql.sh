@@ -37,7 +37,7 @@ STAT $?
 
 HEAD "Extract Downloaded Archive"
 cd /tmp
-unzip mysql.zip &>>/tmp/roboshop.log
+unzip -o mysql.zip &>>/tmp/roboshop.log
 STAT $?
 
 HEAD "Load Shipping Schema\t"
