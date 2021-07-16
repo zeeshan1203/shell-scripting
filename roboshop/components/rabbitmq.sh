@@ -4,7 +4,7 @@ source components/common.sh
 rm -f /tmp/roboshop.log
 set-hostname rabbitmq
 
-HEAD "Install ERLANG"
+HEAD "Install ERLANG\t\t"
 yum list installed | grep erlang &>>/tmp/roboshop.log
 if [ $? -eq 0 ]; then
   echo "Erlang is already Installed" &>>/tmp/roboshop.log
@@ -14,15 +14,15 @@ else
   STAT $?
 fi
 
-HEAD "Setup RabbitMQ Yum Repos"
+HEAD "Setup RabbitMQ Yum Repos\t"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Install RabbitMQ Server"
+HEAD "Install RabbitMQ Server\t"
 yum install rabbitmq-server -y &>>/tmp/roboshop.log
 STAT $?
 
-HEAD "Start RabbitMQ Server"
+HEAD "Start RabbitMQ Server\t"
 systemctl enable rabbitmq-server &>>/tmp/roboshop.log &&  systemctl restart rabbitmq-server &>>/tmp/roboshop.log
 STAT $?
 
