@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo Installing User
+source components/common.sh
+rm -f /tmp/roboshop.log
+set-hostname redis
+
