@@ -29,7 +29,7 @@ APP_USER_ADD() {
 }
 
 SETUP_SYSTEMD() {
-  HEAD "Setup SystemD Service\t"
+  HEAD "Setup SystemD Service\t\t"
   sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/$1/systemd.service  && mv /home/roboshop/$1/systemd.service /etc/systemd/system/$1.service
   STAT $?
 
@@ -68,14 +68,14 @@ NODEJS() {
 }
 
 MAVEN() {
-  HEAD "Install Maven"
+  HEAD "Install Maven\t\t"
   yum install maven -y &>>/tmp/roboshop.log
   STAT $?
 
   APP_USER_ADD
   DOWNLOAD_FROM_GITHUB $1
 
-  HEAD "Make Application Package"
+  HEAD "Make Application Package\t"
   cd /home/roboshop/$1 && mvn clean package &>>/tmp/roboshop.log && mv target/$1-1.0.jar $1.jar &>>/tmp/roboshop.log
   STAT $?
 
