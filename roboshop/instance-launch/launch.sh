@@ -52,5 +52,5 @@ fi
 #echo $SSHPASS
 #sshpass -e ssh ------
 ## for component in frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment ; do
-#   sshpass -e ssh $component.roboshop.internal "git clone https://github.com/zeeshan1203/shell-scripting.git ; cd shell-scripting/roboshop ; git pull ; sudo make $component"
+#   sshpass -e ssh $component.roboshop.internal "git clone https://github.com/zeeshan1203/shell-scripting.git &>/dev/null ; cd shell-scripting/roboshop ; git pull &>/dev/null ; sudo make $component"
 #done
