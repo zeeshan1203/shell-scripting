@@ -48,6 +48,9 @@ else
   INSTANCE_CREATE
 fi
 
+## export SSHPASS='DevOps321'
+#echo $SSHPASS
+#sshpass -e ssh ------
 ## for component in frontend mongodb catalogue redis user cart mysql shipping rabbitmq payment ; do
 #   sshpass -e ssh $component.roboshop.internal "git clone https://github.com/zeeshan1203/shell-scripting.git ; cd shell-scripting/roboshop ; git pull ; sudo make $component"
 #done
