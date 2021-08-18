@@ -9,7 +9,7 @@ if [ -z "${COMPONENT}" ]; then
 fi
 
 LID=lt-0c749183079899d8c
-LVER=1
+LVER=2
 
 ## Validate If Instance is already there
 
