@@ -19,7 +19,7 @@ echo -e "\n\tThe storm, which had weakened during the afternoon,
         had left the coastal states on edge, with the Bengal
         government claiming that at least one crore people have
         been affected by the calamity thus far, as it hollered
-        on its destructive path towards Jharkhand\n."
+        on its destructive path towards Jharkhand.\n"
 
 
 ## Print Text in Colors
@@ -36,8 +36,8 @@ echo -e "\n\tThe storm, which had weakened during the afternoon,
 # Syntax: echo -e "\e[CODEmMessage\e[0m"
 # 0 is color disable
 
-echo -e "\e[31mHello In Red Color\e[0m"
-echo Normal text in no color
-echo -e "\e[33mHello In Yellow Color\e[0m"
+echo -e "\e[31mHello In Red Color\e[0m\n"
+echo Normal text in no color\n
+echo -e "\e[33mHello In Yellow Color\e[0m\n"
 
 ## More details on Colors : https://misc.flogisoft.com/bash/tip_colors_and_formatting
