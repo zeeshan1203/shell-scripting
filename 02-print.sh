@@ -10,7 +10,7 @@ echo Hello World
 # echo to print multiple lines (\n is new line sequence)
 # Syntax : echo -e "line1\nline2"
 
-echo -e "Hello,\nWelcome to DevOps training\n"
+echo -e "\nHello,\nWelcome to DevOps training\n"
 echo -e "\nHello,\n\nWelcome to DevOps training\n"
 
 ## Print a paragraph
@@ -37,7 +37,7 @@ echo -e "\n\tThe storm, which had weakened during the afternoon,
 # 0 is color disable
 
 echo -e "\e[31mHello In Red Color\e[0m\n"
-echo Normal text in no color\n
-echo -e "\e[33mHello In Yellow Color\e[0m\n"
+echo Normal text in no color
+echo -e "\n\e[33mHello In Yellow Color\e[0m\n"
 
 ## More details on Colors : https://misc.flogisoft.com/bash/tip_colors_and_formatting
